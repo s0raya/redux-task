@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-    tasks: [{}]
+    tasks: []
 }
 
 export const taskSlice = createSlice({
@@ -11,7 +11,7 @@ export const taskSlice = createSlice({
         addTask: (state, action ) => {
             const newTask = {
                 id: tasks.lenght + 1,
-                description: action.payload.description,
+                text: action.payload.text,
             };
             state.push(newTask);
         },
