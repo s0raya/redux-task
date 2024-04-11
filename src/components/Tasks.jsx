@@ -1,14 +1,20 @@
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import {removeTask} from '../redux/todosSlice.js'
 
-export function Tasks() {
-    const taskList = useSelector((state) => state.tasks);
+function Tasks() {
+    const taskList = useSelector((state) => state.todos);
+    const dispatch = useDispatch();
     return (
-        <div>
-            <ul>
-                {taskList.map(task => (
-                    <li key={task.id}>{task.text}</li>
-                ))}
-            </ul>
-        </div>
+        <ul>
+            {taskList.map(task => (
+            <li key={task.id}>
+                {task.text}
+                <button onClick={() => dispatch(removeTask(task.id))}>Eliminar</button>
+            </li>
+            
+            ))}
+        </ul>
     )
 }
+
+export default Tasks;

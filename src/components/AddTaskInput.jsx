@@ -6,20 +6,19 @@ const AddTaskInput = () => {
     const dispatch = useDispatch();
     const [text, setText] = useState("");
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        dispatch(addTask({text}));
+    const handleClickAdd = () => {
+        dispatch(addTask({
+            id: Math.random(), 
+            text: text,
+        }));
         setText("");
     }
 
-
     return (
         <>
-        <form onSubmit={handleSubmit}>
-            <label>Add task: </label>
+            <h1>Todo List</h1>
             <input type="text" value={text} onChange={(e) => setText(e.target.value)} />
-            <button type="submit">Añadir</button>
-        </form>
+            <button onClick={handleClickAdd}>Añadir</button>
         </>
     )
 }
